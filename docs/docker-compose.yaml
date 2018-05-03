@@ -1,0 +1,10 @@
+version: "3"
+services:
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "3331:8080"
+    volumes:
+      - ./swagger.json:/var/swagger.json
+    environment:
+      SWAGGER_JSON: /var/swagger.json

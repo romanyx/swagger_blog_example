@@ -10,3 +10,7 @@ generate:
 	--exclude-main
 validate:
 	$(GOPATH)/bin/swagger validate $(GOPATH)/src/github.com/romanyx/swagger_blog_example/docs/swagger.json
+start:
+	docker-compose up -d
+restart:
+	docker-compose restart

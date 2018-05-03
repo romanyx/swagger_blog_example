@@ -5,7 +5,7 @@
 		"title": "Blog example app",
 		"description": "Handling JSON null or missing values with go-swagger example app"
 	},
-	"host": "localhost:3333",
+	"host": "localhost:3332",
 	"basePath": "/",
 	"schemes": [
 		"http"
@@ -62,6 +62,7 @@
 	"definitions": {
 		"NullableInt": {
 			"type": "integer",
+            "example": 1525360737,
 			"x-go-type": {
 				"import": {
 					"package": "github.com/romanyx/nullable"
@@ -75,15 +76,17 @@
 			"properties": {
 				"title": {
 					"description": "Blog title",
-					"type": "string"
+                    "type": "string",
+                    "example": "Handling JSON null or missing values with go-swagger"
 				},
 				"markdown": {
 					"description": "Blog markdown body",
-					"type": "string"
+                    "type": "string",
+                    "example": "In JSON there are two ways to represent null values, first is when there is no value for given key and it’s value implicitly set to null, and second is when key is present and it’s value is explicitly set to null."
 				},
 				"published_at": {
 					"description": "Blog timestamp",
-					"$ref": "#/definitions/NullableInt"
+                    "$ref": "#/definitions/NullableInt"
 				}
 			},
 			"required": [
@@ -97,15 +100,18 @@
 			"properties": {
 				"title": {
 					"description": "Blog title",
-					"type": "string"
+					"type": "string",
+                    "example": "Handling JSON null or missing values with go-swagger"
 				},
 				"markdown": {
 					"description": "Blog body",
-					"type": "string"
+					"type": "string",
+                    "example": "In JSON there are two ways to represent null values, first is when there is no value for given key and it’s value implicitly set to null, and second is when key is present and it’s value is explicitly set to null."
 				},
 				"published_at": {
 					"description": "Blog timestamp",
-					"type": "string"
+					"type": "integer",
+                    "example": 1525360737
 				}
 			},
 			"required": [
@@ -119,7 +125,8 @@
 			],
 			"properties": {
 				"message": {
-					"type": "string"
+                    "type": "string",
+                    "example": "Internal server error"
 				}
 			}
 		}
