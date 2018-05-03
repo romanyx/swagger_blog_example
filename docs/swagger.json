@@ -46,7 +46,7 @@
 					"200": {
 						"description": "Success",
 						"schema": {
-							"$ref": "#/definitions/BlogResponse"
+							"$ref": "#/definitions/MessageResponse"
 						}
 					},
 					"default": {
@@ -94,35 +94,15 @@
 				"markdown"
 			]
 		},
-		"BlogResponse": {
-			"title": "Blog response",
-			"type": "object",
+		"MessageResponse": {
 			"properties": {
-				"title": {
-					"description": "Blog title",
-					"type": "string",
-                    "example": "Handling JSON null or missing values with go-swagger"
-				},
-				"markdown": {
-					"description": "Blog body",
-					"type": "string",
-                    "example": "In JSON there are two ways to represent null values, first is when there is no value for given key and it’s value implicitly set to null, and second is when key is present and it’s value is explicitly set to null."
-				},
-				"published_at": {
-					"description": "Blog timestamp",
-					"type": "integer",
-                    "example": 1525360737
+				"message": {
+                    "type": "string",
+                    "example": "Blog updated"
 				}
-			},
-			"required": [
-				"title",
-				"markdown"
-			]
+			}
 		},
 		"ErrorResponse": {
-			"required": [
-				"message"
-			],
 			"properties": {
 				"message": {
                     "type": "string",
