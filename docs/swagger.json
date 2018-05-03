@@ -1,0 +1,127 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "0.0.1",
+		"title": "Blog example app",
+		"description": "Handling JSON null or missing values with go-swagger example app"
+	},
+	"host": "localhost:3333",
+	"basePath": "/",
+	"schemes": [
+		"http"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		"/blog/{id}": {
+			"patch": {
+				"description": "Updates blog post",
+				"tags": [
+					"blog"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Id of the blog post",
+						"required": true,
+						"type": "integer",
+						"minimum": 1
+					},
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"description": "Request body",
+						"schema": {
+							"$ref": "#/definitions/BlogUpdateRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/BlogResponse"
+						}
+					},
+					"default": {
+						"description": "Error",
+						"schema": {
+							"$ref": "#/definitions/ErrorResponse"
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"NullableInt": {
+			"type": "integer",
+			"x-go-type": {
+				"import": {
+					"package": "github.com/romanyx/nullable"
+				},
+				"type": "Int"
+			}
+		},
+		"BlogUpdateRequest": {
+			"title": "Blog update request",
+			"type": "object",
+			"properties": {
+				"title": {
+					"description": "Blog title",
+					"type": "string"
+				},
+				"markdown": {
+					"description": "Blog markdown body",
+					"type": "string"
+				},
+				"published_at": {
+					"description": "Blog timestamp",
+					"$ref": "#/definitions/NullableInt"
+				}
+			},
+			"required": [
+				"title",
+				"markdown"
+			]
+		},
+		"BlogResponse": {
+			"title": "Blog response",
+			"type": "object",
+			"properties": {
+				"title": {
+					"description": "Blog title",
+					"type": "string"
+				},
+				"markdown": {
+					"description": "Blog body",
+					"type": "string"
+				},
+				"published_at": {
+					"description": "Blog timestamp",
+					"type": "string"
+				}
+			},
+			"required": [
+				"title",
+				"markdown"
+			]
+		},
+		"ErrorResponse": {
+			"required": [
+				"message"
+			],
+			"properties": {
+				"message": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
